@@ -12,42 +12,31 @@ const span = document.getElementById('contatore');
 
 
 form.onsubmit = (event) => {
+
     event.preventDefault();
-    showUser();
+
     localStorage.setItem("username", inputName.value);
+    
+    showUser(inputName);
+    form.reset();
 
 }
 
 const showUser = () => {
 
     const p = document.createElement('p');
-    p.innerText = inputName.value;
+    p.innerText = localStorage.getItem("username");
     div.innerText = "";
     div.appendChild(p);
 
 }
 
 
-window.addEventListener("DOMContentLoaded", () => {
-
-    const newUser = localStorage.getItem("username")
-    console.log(newUser)
-
-}
-
-)
-
 setInterval(() => {
 
     span.innerText = contatore;
     
 }, 1000);
-
-
-
-
-
-
 
 
 let contatore = sessionStorage.getItem("count");
@@ -64,3 +53,12 @@ const seconds = sessionStorage.getItem("count")
 console.log(seconds)
     
 }, 1000);
+
+window.addEventListener("DOMContentLoaded", function () {
+    const actualUser = localStorage.getItem("username")
+
+    if(actualUser) {
+        showUser();
+    }
+});
+
