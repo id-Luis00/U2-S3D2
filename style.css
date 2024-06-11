@@ -1,0 +1,11 @@
+@import url(https://matcha.mizu.sh/matcha.css);
+
+
+
+.userInput {
+    display: flex;
+}
+
+.userInput input {
+    width: 50px;
+}
